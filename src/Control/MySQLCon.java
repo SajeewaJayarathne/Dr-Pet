@@ -1,10 +1,15 @@
 package Control;
 
-import java.sql.*;
 
 /**
  * Created by Sajeewa on 3/24/2017.
  */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+
 public class MySQLCon {
 
     public Connection connectDatabase() throws ClassNotFoundException, SQLException {
