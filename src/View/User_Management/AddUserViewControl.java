@@ -1,5 +1,6 @@
 package View.User_Management;
 
+import Model.AddPhoneModel;
 import Model.AddUserModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public class AddUserViewControl {
 
     AddUserModel addUserModel;
+    AddPhoneModel addPhoneModel;
+
     private int addButtonClickCount = 0;
 
     @FXML
@@ -94,7 +97,9 @@ public class AddUserViewControl {
 
                 addUserModel.addUserLoginDetails(password.getText(), true);
 
-                addUserModel.addPhone(phoneNumbers);
+                addPhoneModel = new AddPhoneModel(userID.getText());
+                addPhoneModel.addPhone(phoneNumbers);
+
             }
         }
     }
@@ -126,6 +131,8 @@ public class AddUserViewControl {
         phone3.setVisible(false);
         phone4.setText("");
         phone4.setVisible(false);
+
+        addPhone.setDisable(false);
 
         basic_salary.setText("");
         adminRadio.setSelected(true);

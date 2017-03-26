@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Sajeewa on 3/26/2017.
@@ -22,45 +19,12 @@ public class AddUserModel {
         addUserController = new AddUserController(userID);
     }
 
-    //validate inputs
-    //validate email
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
-    public boolean validateEmail(String email){
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
-        return matcher.find();
-    }
-
-    //validate city and country
-
-    //validate nic
-    public boolean validateNIC(String nic){
-
-        if (nic.length()<10 || nic.length()>10){
-            return false;
-        } else {
-            for (int digit = 0; digit < 9; digit++){
-                String nicSubstring = nic.substring(digit, digit+1);
-                if (!nicSubstring.matches("[-+]?\\d*\\.?\\d+")){
-                    return false;
-                }
-            }
-
-            if (!(nic.substring(9)=="V" && nic.substring(9)=="v")){
-                return false;
-            }
-            return true;
-        }
-    }
-
-    //validate phone number
+    //sending data to the controller
 
     public void addUser(String first_name, String middle_initials, String last_name) throws SQLException, FileNotFoundException {
         addUserController.createUser(first_name, middle_initials, last_name);
     }
-    //--
 
-    //sending data to the controller
     SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
     public void addUserPersonalDetails(String genderStr, String marital_statusStr, String street_no, String street_name, String city, String state, String country, String email, String nic, String date_of_birth) throws ParseException, SQLException {
@@ -106,7 +70,4 @@ public class AddUserModel {
         addUserController.loginDetails(hashedPassword, is_active);
     }
 
-    public void addPhone(ArrayList<String> phone) throws SQLException {
-       addUserController.phoneDetails(phone);
-    }
 }
