@@ -2,24 +2,21 @@ package Model;
 
 import Control.LoginController;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 /**
  * Created by Sajeewa on 3/24/2017.
  */
-public class LoginAuthentication {
+public class LoginAuthenticationModel {
 
     private String inputUserName;
     private String inputPassword;
     private String inputHashedPassword;
 
     private LoginController loginController;
+    private HashPasswordModel hashPasswordModel;
 
-    public LoginAuthentication() throws SQLException, ClassNotFoundException {
+    public LoginAuthenticationModel() throws SQLException, ClassNotFoundException {
         loginController = new LoginController();
     }
 
@@ -44,21 +41,6 @@ public class LoginAuthentication {
         this.inputPassword = inputPassword;
     }
 
-    public void hashFunction(){
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            md.update(getInputPassword().getBytes("UTF-8"));
-
-            byte[] digest = md.digest();
-
-            inputHashedPassword = String.format("%064x", new BigInteger(1, digest));
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-    }
 
     //from database
     private boolean findUserName() throws SQLException {
@@ -83,6 +65,8 @@ public class LoginAuthentication {
 
     public boolean authenticate(String inputUserName, String inputPassword) throws SQLException {
 
+        hashPasswordModel = new HashPasswordModel();
+
         //default authentication
         boolean authenticated = false;
 
@@ -91,7 +75,7 @@ public class LoginAuthentication {
         setInputPassword(inputPassword);
 
         //call hash function
-        hashFunction();
+        inputHashedPassword = hashPasswordModel.hashFunction(getInputPassword());
 
         //get details from the Database
         boolean foundUser = this.findUserName();

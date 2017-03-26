@@ -1,0 +1,27 @@
+#rootLayout {
+    -fx-background-image: url("../background.jpg");
+}
+
+#heading {
+    -fx-font-size: 32px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #818181;
+    -fx-text-fill: #b2b3b6;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.8) , 6, 0.0 , 0 , 2 );
+}
+
+#transparentLayer{
+    -fx-background-color: rgba(200, 200, 200, 0.2);
+    -fx-background-radius: 10;
+
+}
+
+#button{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-size: 13pt;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane id="rootLayout" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="421.0" stylesheets="UserStyleSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User_Management.AddUserViewControl">
+   <stylesheets>
+      <URL value="@../User_Management/UserStyleSheet.css" />
+   </stylesheets>
+   <children>
+      <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="5.0" prefHeight="60.0" prefWidth="413.0" stylesheets="UserStyleSheet.css" text="ADD NEW USER">
+         <font>
+            <Font name="Cambria Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane id="transparentLayer" layoutX="24.0" layoutY="77.0" prefHeight="416.0" prefWidth="373.0" stylesheets="UserStyleSheet.css">
+         <children>
+            <Label fx:id="userID" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="33.0" prefWidth="362.0" style="-fx-text-fill: white;" text="User ID">
+               <font>
+                  <Font name="Book Antiqua Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="first_name" layoutX="27.0" layoutY="215.0" prefHeight="25.0" prefWidth="320.0" promptText="First Name" />
+            <TextField fx:id="middle_initials" layoutX="27.0" layoutY="247.0" prefHeight="25.0" prefWidth="320.0" promptText="Middle Initials" />
+            <TextField fx:id="last_name" layoutX="27.0" layoutY="280.0" prefHeight="25.0" prefWidth="320.0" promptText="Last Name" />
+            <PasswordField fx:id="password" layoutX="27.0" layoutY="320.0" prefHeight="25.0" prefWidth="320.0" promptText="Password" />
+            <Pane layoutX="114.0" layoutY="49.0" prefHeight="151.0" prefWidth="151.0" style="-fx-border-color: white; -fx-border-width: 5;" AnchorPane.topAnchor="49.0">
+               <children>
+                  <ImageView id="image" fx:id="imageView" fitHeight="135.0" fitWidth="135.0" layoutX="8.0" layoutY="8.0" onMouseClicked="#imageChooser" pickOnBounds="true" preserveRatio="true" style="visibility: true;" />
+               </children>
+            </Pane>
+            <Button id="button" fx:id="createButton" layoutX="27.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCreateUser" prefHeight="33.0" prefWidth="320.0" stylesheets="@UserStyleSheet.css" text="CREATE">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

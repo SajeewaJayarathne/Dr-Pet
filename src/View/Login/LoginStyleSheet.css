@@ -5,12 +5,10 @@
     -fx-padding: 10 10 10 10;
     -fx-background-radius: 20;
     -fx-font-size: 10pt;
-    -fx-font-weight: bold;
 }
 
-
 #borderPane {
-    -fx-background-image: url("background.jpg");
+    -fx-background-image: url("../background.jpg");
 }
 
 #loginButton {
@@ -32,4 +30,8 @@
     -fx-font-family: "Arial Black";
     -fx-fill: #818181;
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+#logo{
+    -fx-border-radius: 20;
 }

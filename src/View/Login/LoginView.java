@@ -1,19 +1,19 @@
-package View;/**
+package View.Login;/**
  * Created by Sajeewa on 3/24/2017.
  */
-import Model.LoginAuthentication;
+
+import Model.LoginAuthenticationModel;
 import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Reflection;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -26,7 +26,7 @@ import java.sql.SQLException;
 
 public class LoginView extends Application{
 
-    LoginAuthentication loginAuthentication;
+    LoginAuthenticationModel loginAuthenticationModel;
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,33 +36,28 @@ public class LoginView extends Application{
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Dr. Pet Login");
 
-        primaryStage.setHeight(320);
+        primaryStage.setHeight(450);
         primaryStage.setWidth(500);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(10,50,50,50));
 
-        //Adding HBox
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(20,20,20,30));
+        //Adding VBox
+        VBox vBox = new VBox();
+        vBox.setPadding(new Insets(20,20,20,30));
 
-        //GridPane with 10px padding around edge
-        GridPane gridPane = new GridPane();
-        gridPane.setPadding(new Insets(20,20,20,20));
-        gridPane.setVgap(5);
-        gridPane.setHgap(5);
 
-        gridPane.getColumnConstraints().add(new ColumnConstraints(100));
+        VBox vBox1 = new VBox();
+        vBox1.setSpacing(6);
+
 
         //Implementing Nodes for GridPane
-        Label usernameLabel = new Label("Username");
         final TextField usernameInput = new TextField();
-        usernameInput.setPrefWidth(210);
-        Label passwordLabel = new Label("Password");
+        usernameInput.setPromptText("Username");
+
         final PasswordField passwordInput = new PasswordField();
-        passwordInput.setPrefWidth(200);
+        passwordInput.setPromptText("Password");
         Button loginButton = new Button("Login");
-        final Label messageLabel = new Label();
 
         //Action for Login Button
         loginButton.setOnAction(e -> {
@@ -75,26 +70,25 @@ public class LoginView extends Application{
             }
         });
 
-        //Adding Nodes to GridPane layout
-        gridPane.add(usernameLabel, 0, 0);
-        gridPane.add(usernameInput, 1, 0);
-        gridPane.add(passwordLabel, 0, 1);
-        gridPane.add(passwordInput, 1, 1);
-        gridPane.add(loginButton, 1, 3);
-        gridPane.add(messageLabel, 1, 2);
+        //Adding Nodes to vBox1
+        vBox1.getChildren().addAll(usernameInput, passwordInput, loginButton);
+        vBox1.setAlignment(Pos.CENTER);
 
-        gridPane.setHalignment(usernameLabel, HPos.RIGHT);
-        gridPane.setHalignment(passwordLabel, HPos.RIGHT);
 
-        //Reflection for gridPane
+        //Reflection for pane
         Reflection reflection = new Reflection();
         reflection.setFraction(0.7f);
-        gridPane.setEffect(reflection);
+        vBox1.setEffect(reflection);
 
         //DropShadow effect
         DropShadow dropShadow = new DropShadow();
         dropShadow.setOffsetX(5);
         dropShadow.setOffsetY(5);
+
+
+        Image image = new Image(getClass().getResourceAsStream("../full_logo_small.PNG"));
+        Label logoLabel = new Label("", new ImageView(image));
+        logoLabel.setMaxSize(50, 50);
 
         //Adding text and DropShadow effect to it
         Text text = new Text("WELCOME");
@@ -103,19 +97,20 @@ public class LoginView extends Application{
         text.setTextAlignment(TextAlignment.CENTER);
 
         //Adding text to HBox
-        hBox.getChildren().add(text);
-        hBox.setAlignment(Pos.CENTER);
+        vBox.getChildren().addAll(logoLabel, text);
+        vBox.setAlignment(Pos.CENTER);
 
         //Add ID's to Nodes
         borderPane.setId("borderPane");
-        gridPane.setId("root");
+        vBox1.setId("root");
         loginButton.setId("loginButton");
         text.setId("text");
+        logoLabel.setId("logo");
 
         //Add HBox and GridPane layout to BorderPane Layout
-        BorderPane.setAlignment(hBox, Pos.CENTER);
-        borderPane.setTop(hBox);
-        borderPane.setCenter(gridPane);
+        BorderPane.setAlignment(vBox, Pos.CENTER);
+        borderPane.setTop(vBox);
+        borderPane.setCenter(vBox1);
 
         Scene scene = new Scene(borderPane);
 
@@ -131,15 +126,15 @@ public class LoginView extends Application{
         primaryStage.setScene(scene);
 //        primaryStage.titleProperty().bind(scene.widthProperty().asString().concat(" : ").concat(scene.heightProperty().asString()));
 
-        primaryStage.setResizable(false);
+//        primaryStage.setResizable(false);
 
         primaryStage.show();
     }
 
     private void login(String username, String password, Stage stage) throws SQLException, ClassNotFoundException {
-        loginAuthentication = new LoginAuthentication();
+        loginAuthenticationModel = new LoginAuthenticationModel();
 
-        boolean authenticated = loginAuthentication.authenticate(username, password);
+        boolean authenticated = loginAuthenticationModel.authenticate(username, password);
 
         if (authenticated){
             System.out.println("login successful!");
