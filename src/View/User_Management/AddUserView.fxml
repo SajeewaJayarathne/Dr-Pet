@@ -1,38 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-<AnchorPane id="rootLayout" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="421.0" stylesheets="UserStyleSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User_Management.AddUserViewControl">
+
+<AnchorPane id="rootLayout" fx:id="rootLayout" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="717.0" prefWidth="1360.0" stylesheets="UserStyleSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.User_Management.AddUserViewControl">
    <stylesheets>
       <URL value="@../User_Management/UserStyleSheet.css" />
    </stylesheets>
    <children>
-      <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="5.0" prefHeight="60.0" prefWidth="413.0" stylesheets="UserStyleSheet.css" text="ADD NEW USER">
+      <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="5.0" prefHeight="60.0" prefWidth="1222.0" stylesheets="UserStyleSheet.css" text="ADD NEW USER">
          <font>
             <Font name="Cambria Bold" size="28.0" />
          </font>
       </Label>
-      <AnchorPane id="transparentLayer" layoutX="24.0" layoutY="77.0" prefHeight="416.0" prefWidth="373.0" stylesheets="UserStyleSheet.css">
+      <AnchorPane id="transparentLayer" layoutX="30.0" layoutY="72.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="862.0" stylesheets="UserStyleSheet.css">
          <children>
-            <Label fx:id="userID" alignment="CENTER" layoutX="6.0" layoutY="7.0" prefHeight="33.0" prefWidth="362.0" style="-fx-text-fill: white;" text="User ID">
+            <TextField id="text_field" fx:id="userID" layoutX="27.0" layoutY="49.0" prefHeight="25.0" prefWidth="365.0" promptText="User ID" />
+            <PasswordField id="pass_field" fx:id="password" layoutX="27.0" layoutY="110.0" prefHeight="25.0" prefWidth="365.0" promptText="Password *" />
+            <PasswordField id="pass_field" fx:id="confirm_password" layoutX="27.0" layoutY="141.0" prefHeight="25.0" prefWidth="365.0" promptText="Confirm Password *" />
+            <TextField id="text_field" fx:id="first_name" layoutX="27.0" layoutY="201.0" prefHeight="25.0" prefWidth="365.0" promptText="First Name *" />
+            <TextField id="text_field" fx:id="middle_initials" layoutX="27.0" layoutY="232.0" prefHeight="25.0" prefWidth="365.0" promptText="Middle Initials" />
+            <TextField id="text_field" fx:id="last_name" layoutX="27.0" layoutY="263.0" prefHeight="25.0" prefWidth="365.0" promptText="Last Name *" />
+            <RadioButton id="radioButton" fx:id="maleRadio" layoutX="145.0" layoutY="300.0" mnemonicParsing="false" selected="true" text="Male" textFill="WHITE">
                <font>
-                  <Font name="Book Antiqua Bold" size="15.0" />
+                  <Font size="13.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="genderGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="239.0" layoutY="300.0" mnemonicParsing="false" text="Female" textFill="WHITE" toggleGroup="$genderGroup">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
+            <RadioButton id="radioButton" fx:id="unmarriedRadio" layoutX="239.0" layoutY="333.0" mnemonicParsing="false" text="Unmarried" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="maritalGroup" />
+               </toggleGroup>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
+            <RadioButton id="radioButton" fx:id="marriedRadio" layoutX="145.0" layoutY="333.0" mnemonicParsing="false" selected="true" text="Married" textFill="WHITE" toggleGroup="$maritalGroup">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
+            <TextField id="text_field" fx:id="street_no" layoutX="27.0" layoutY="386.0" prefHeight="25.0" prefWidth="134.0" promptText="Street No. *" />
+            <TextField id="text_field" fx:id="street_name" layoutX="169.0" layoutY="386.0" prefHeight="25.0" prefWidth="223.0" promptText="Street Name" />
+            <TextField id="text_field" fx:id="city" layoutX="27.0" layoutY="417.0" prefHeight="25.0" prefWidth="365.0" promptText="City *" />
+            <TextField id="text_field" fx:id="state" layoutX="27.0" layoutY="448.0" prefHeight="25.0" prefWidth="365.0" promptText="State" />
+            <TextField id="text_field" fx:id="country" layoutX="27.0" layoutY="479.0" prefHeight="25.0" prefWidth="365.0" promptText="Country *" />
+            <TextField id="text_field" fx:id="nic" layoutX="452.0" layoutY="49.0" prefHeight="25.0" prefWidth="365.0" promptText="National Identity Card No: *" />
+            <DatePicker id="datePicker" fx:id="dob" layoutX="452.0" layoutY="110.0" prefHeight="25.0" prefWidth="365.0" promptText="yyyy/MM/dd" />
+            <TextField id="text_field" fx:id="email" layoutX="452.0" layoutY="201.0" prefHeight="25.0" prefWidth="365.0" promptText="Email Address" />
+            <TextField id="text_field" fx:id="phone1" layoutX="452.0" layoutY="232.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number *" />
+            <TextField id="text_field" fx:id="phone2" layoutX="452.0" layoutY="263.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
+            <TextField id="text_field" fx:id="phone3" layoutX="452.0" layoutY="294.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
+            <TextField id="text_field" fx:id="phone4" layoutX="452.0" layoutY="325.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
+            <Label blendMode="SOFT_LIGHT" layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="161.0" text="Personal Information" textFill="#0b0122" textOverrun="CLIP">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="first_name" layoutX="27.0" layoutY="215.0" prefHeight="25.0" prefWidth="320.0" promptText="First Name" />
-            <TextField fx:id="middle_initials" layoutX="27.0" layoutY="247.0" prefHeight="25.0" prefWidth="320.0" promptText="Middle Initials" />
-            <TextField fx:id="last_name" layoutX="27.0" layoutY="280.0" prefHeight="25.0" prefWidth="320.0" promptText="Last Name" />
-            <PasswordField fx:id="password" layoutX="27.0" layoutY="320.0" prefHeight="25.0" prefWidth="320.0" promptText="Password" />
-            <Pane layoutX="114.0" layoutY="49.0" prefHeight="151.0" prefWidth="151.0" style="-fx-border-color: white; -fx-border-width: 5;" AnchorPane.topAnchor="49.0">
-               <children>
-                  <ImageView id="image" fx:id="imageView" fitHeight="135.0" fitWidth="135.0" layoutX="8.0" layoutY="8.0" onMouseClicked="#imageChooser" pickOnBounds="true" preserveRatio="true" style="visibility: true;" />
-               </children>
-            </Pane>
-            <Button id="button" fx:id="createButton" layoutX="27.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCreateUser" prefHeight="33.0" prefWidth="320.0" stylesheets="@UserStyleSheet.css" text="CREATE">
+            <Line endX="710.0" fill="#140065" layoutX="120.0" layoutY="35.0" startX="-100.0" stroke="#0c023c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" />
+            <Label id="label" layoutX="28.0" layoutY="300.0" prefHeight="17.0" prefWidth="70.0" text="Gender:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="27.0" layoutY="333.0" prefHeight="17.0" prefWidth="94.0" text="Marital Status:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="27.0" layoutY="88.0" prefHeight="17.0" prefWidth="94.0" text="Login Details:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="28.0" layoutY="180.0" prefHeight="17.0" prefWidth="94.0" text="Name:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="27.0" layoutY="363.0" prefHeight="17.0" prefWidth="94.0" text="Address:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button id="button" fx:id="addPhone" layoutX="784.0" layoutY="232.0" mnemonicParsing="false" onAction="#handlePhoneNumber" text="+" />
+            <Label id="label" layoutX="452.0" layoutY="180.0" prefHeight="19.0" prefWidth="134.0" text="Contact Details:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="452.0" layoutY="88.0" prefHeight="17.0" prefWidth="94.0" text="Date of Birth:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="transparentLayer" layoutX="914.0" layoutY="72.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="415.0" stylesheets="UserStyleSheet.css">
+         <children>
+            <TextField id="text_field" fx:id="basic_salary" layoutX="25.0" layoutY="49.0" prefHeight="25.0" prefWidth="365.0" promptText="Basic Salary *" />
+            <DatePicker id="datePicker" fx:id="empdate" layoutX="25.0" layoutY="110.0" prefHeight="25.0" prefWidth="365.0" promptText="yyyy/MM/dd" />
+            <RadioButton id="radioButton" fx:id="adminRadio" layoutX="135.0" layoutY="180.0" mnemonicParsing="false" selected="true" text="Administrator" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="userGroup" />
+               </toggleGroup>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
+            <RadioButton id="radioButton" fx:id="doctorRadio" layoutX="274.0" layoutY="180.0" mnemonicParsing="false" text="Doctor" textFill="WHITE" toggleGroup="$userGroup">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </RadioButton>
+            <Label blendMode="SOFT_LIGHT" layoutX="19.0" layoutY="10.0" text="Employment Information" textFill="#0b0122" textOverrun="CLIP">
+               <font>
+                  <Font name="Cambria Bold" size="17.0" />
+               </font>
+            </Label>
+            <Line endX="280.0" fill="#140065" layoutX="117.0" layoutY="35.0" startX="-100.0" stroke="#100051" strokeLineCap="ROUND" strokeLineJoin="BEVEL" />
+            <Label id="label" layoutX="25.0" layoutY="91.0" prefHeight="19.0" prefWidth="161.0" text="Employment Date:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label id="label" layoutX="25.0" layoutY="180.0" prefHeight="19.0" prefWidth="94.0" text="User Type:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="transparentLayer" layoutX="31.0" layoutY="613.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="77.0" prefWidth="1299.0" stylesheets="UserStyleSheet.css">
+         <children>
+            <Button id="button" fx:id="createButton" layoutX="1040.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleCreateUser" prefHeight="33.0" prefWidth="217.0" stylesheets="@UserStyleSheet.css" text="CREATE">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button id="button" fx:id="clearButton" layoutX="802.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="33.0" prefWidth="217.0" stylesheets="@UserStyleSheet.css" text="CLEAR">
                <font>
                   <Font name="Cambria Bold" size="16.0" />
                </font>

@@ -2,13 +2,11 @@ package Model;
 
 import Control.AddUserController;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,33 +17,6 @@ public class AddUserModel {
 
     AddUserController addUserController;
     HashPasswordModel hashPasswordModel;
-
-//    private String userID;
-    private String first_name;
-    private String middle_initials;
-    private String last_name;
-
-    private Date start_date;
-    private Date end_date;
-    private float basic_salary;
-    private String user_type;
-
-    private String password;
-    private boolean is_active; //if active 1; inactive 0
-
-    private String gender; //if male send 0; female send 1
-    private boolean marital_status; //married - 1; unmarried - 0
-    private String street_no;
-    private String street_name;
-    private String city;
-    private String state;
-    private String country;
-    private String email;
-    private String nic;
-    private Date date_of_birth;
-
-    private ArrayList<String> phone;
-
 
     public AddUserModel(String userID) throws SQLException, ClassNotFoundException {
         addUserController = new AddUserController(userID);
@@ -87,7 +58,9 @@ public class AddUserModel {
     public void addUser(String first_name, String middle_initials, String last_name) throws SQLException, FileNotFoundException {
         addUserController.createUser(first_name, middle_initials, last_name);
     }
+    //--
 
+    //sending data to the controller
     SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
     public void addUserPersonalDetails(String genderStr, String marital_statusStr, String street_no, String street_name, String city, String state, String country, String email, String nic, String date_of_birth) throws ParseException, SQLException {
@@ -131,5 +104,9 @@ public class AddUserModel {
         String hashedPassword = hashPasswordModel.hashFunction(password);
 
         addUserController.loginDetails(hashedPassword, is_active);
+    }
+
+    public void addPhone(ArrayList<String> phone) throws SQLException {
+       addUserController.phoneDetails(phone);
     }
 }
