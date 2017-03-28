@@ -3,14 +3,17 @@ package View.User_Management;
 import Model.AddPhoneModel;
 import Model.AddUserModel;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class AddUserViewControl {
+public class AddUserViewControl implements Initializable{
 
     AddUserModel addUserModel;
     AddPhoneModel addPhoneModel;
@@ -34,6 +37,8 @@ public class AddUserViewControl {
 
     @FXML
     public void handleCreateUser() throws SQLException, ClassNotFoundException, FileNotFoundException, ParseException {
+
+        addUserModel = new AddUserModel(userID.getText());
 
         if (userID.getText().isEmpty() || password.getText().isEmpty() || confirm_password.getText().isEmpty()
                 || first_name.getText().isEmpty() || last_name.getText().isEmpty() || street_no.getText().isEmpty()
@@ -87,7 +92,6 @@ public class AddUserViewControl {
                     user_type = "d";
                 }
 
-                addUserModel = new AddUserModel(userID.getText());
 
                 addUserModel.addUser(first_name.getText(), middle_initials.getText(), last_name.getText());
 
@@ -153,5 +157,10 @@ public class AddUserViewControl {
                 addPhone.setDisable(true);
                 break;
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

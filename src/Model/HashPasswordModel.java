@@ -12,8 +12,11 @@ public class HashPasswordModel {
 
     public String hashFunction(String password){
 
+        System.out.println(password);
+
         String hashedPassword = "";
         try {
+            System.out.println(password);
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(password.getBytes("UTF-8"));
 

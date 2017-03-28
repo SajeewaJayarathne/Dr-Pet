@@ -34,6 +34,6 @@ public class AddOwnerController {
         preparedStatement.setString(10, country);
         preparedStatement.setString(11, email);
 
-        preparedStatement.executeQuery();
+        preparedStatement.execute();
     }
 }

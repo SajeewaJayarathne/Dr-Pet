@@ -1,19 +1,19 @@
 #rootLayout {
     -fx-background-image: url("../background.jpg");
+    -fx-background-size: cover;
 }
 
 #heading {
     -fx-font-size: 32px;
     -fx-font-family: "Arial Black";
-    -fx-fill: #818181;
-    -fx-text-fill: #b2b3b6;
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.8) , 6, 0.0 , 0 , 2 );
+    -fx-fill: #fcfcfc;
+    -fx-text-fill: Black;
+    -fx-effect: innershadow( three-pass-box , rgba(250,250,180,0.8) , 6, 0.0 , 0 , 2 );
 }
 
 #transparentLayer{
-    -fx-background-color: rgba(200, 200, 200, 0.2);
-    -fx-background-radius: 10;
-
+    -fx-background-color: rgba(210, 210, 210, 0.3);
+    -fx-background-radius: 15;
 }
 
 #button{
@@ -24,4 +24,41 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-font-size: 13pt;
     -fx-font-weight: bold;
+}
+
+#imageLabel{
+    -fx-border-radius: 15;
+    -fx-border-width: 1pt;
+    -fx-border-color: #2A5058;
+}
+
+#menuButton{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 0;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+    -fx-font-family: "Cambria";
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-text-alignment: left;
+    -fx-cursor: hand;
+}
+
+#menuButton:hover{
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#followUpListView{
+    -fx-background-color: transparent;
 }

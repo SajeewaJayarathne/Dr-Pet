@@ -31,6 +31,6 @@ public class AddPatientController {
         preparedStatement.setString(5, breed);
         preparedStatement.setDate(6, dob);
 
-        preparedStatement.executeQuery();
+        preparedStatement.execute();
     }
 }

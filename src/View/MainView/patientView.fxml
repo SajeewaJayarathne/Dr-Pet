@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
 
-<AnchorPane id="rootLayout" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="649.0" stylesheets="../Stylesheets/mainStylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Patient_Management.AddPatientViewControl">
+<AnchorPane id="rootLayout" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="649.0" stylesheets="../Stylesheets/mainStylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.patientViewControl">
    <stylesheets>
       <URL value="@../Stylesheets/mainStylesheet.css" />
    </stylesheets>

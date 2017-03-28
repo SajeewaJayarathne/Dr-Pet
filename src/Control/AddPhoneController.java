@@ -28,7 +28,7 @@ public class AddPhoneController {
             preparedStatement.setString(1, this.userID);
             preparedStatement.setString(2, phone.get(i));
 
-            preparedStatement.executeQuery();
+            preparedStatement.execute();
         }
     }
 }

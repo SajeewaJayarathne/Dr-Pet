@@ -31,7 +31,7 @@
             <TextField id="text_field" fx:id="first_name" layoutX="27.0" layoutY="235.0" prefHeight="25.0" prefWidth="365.0" promptText="First Name *" />
             <TextField id="text_field" fx:id="middle_initials" layoutX="27.0" layoutY="266.0" prefHeight="25.0" prefWidth="365.0" promptText="Middle Initials" />
             <TextField id="text_field" fx:id="last_name" layoutX="27.0" layoutY="297.0" prefHeight="25.0" prefWidth="365.0" promptText="Last Name *" />
-            <RadioButton id="radioButton" fx:id="maleRadio" layoutX="570.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Male" textFill="WHITE">
+            <RadioButton id="radioButton" fx:id="maleRadio" layoutX="570.0" layoutY="60.0" mnemonicParsing="false" selected="true" text="Male">
                <font>
                   <Font size="13.0" />
                </font>
@@ -39,12 +39,12 @@
                   <ToggleGroup fx:id="genderGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="664.0" layoutY="60.0" mnemonicParsing="false" text="Female" textFill="WHITE" toggleGroup="$genderGroup">
+            <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="664.0" layoutY="60.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
                <font>
                   <Font size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton id="radioButton" fx:id="unmarriedRadio" layoutX="665.0" layoutY="104.0" mnemonicParsing="false" text="Unmarried" textFill="WHITE">
+            <RadioButton id="radioButton" fx:id="unmarriedRadio" layoutX="665.0" layoutY="104.0" mnemonicParsing="false" text="Unmarried">
                <toggleGroup>
                   <ToggleGroup fx:id="maritalGroup" />
                </toggleGroup>
@@ -52,7 +52,7 @@
                   <Font size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton id="radioButton" fx:id="marriedRadio" layoutX="571.0" layoutY="104.0" mnemonicParsing="false" selected="true" text="Married" textFill="WHITE" toggleGroup="$maritalGroup">
+            <RadioButton id="radioButton" fx:id="marriedRadio" layoutX="571.0" layoutY="104.0" mnemonicParsing="false" selected="true" text="Married" toggleGroup="$maritalGroup">
                <font>
                   <Font size="13.0" />
                </font>
@@ -69,44 +69,44 @@
             <TextField id="text_field" fx:id="phone2" layoutX="453.0" layoutY="353.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
             <TextField id="text_field" fx:id="phone3" layoutX="453.0" layoutY="384.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
             <TextField id="text_field" fx:id="phone4" layoutX="453.0" layoutY="415.0" prefHeight="25.0" prefWidth="320.0" promptText="Phone Number" visible="false" />
-            <Label blendMode="SOFT_LIGHT" layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="161.0" text="Personal Information" textFill="#0b0122" textOverrun="CLIP">
+            <Label blendMode="SOFT_LIGHT" layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="161.0" text="Personal Information" textOverrun="CLIP">
                <font>
                   <Font name="Cambria Bold" size="16.0" />
                </font>
             </Label>
             <Line endX="710.0" fill="#140065" layoutX="120.0" layoutY="35.0" startX="-100.0" stroke="#0c023c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" />
-            <Label id="label" layoutX="453.0" layoutY="60.0" prefHeight="17.0" prefWidth="70.0" text="Gender:" textFill="WHITE">
+            <Label id="label" layoutX="453.0" layoutY="60.0" prefHeight="17.0" prefWidth="70.0" text="Gender:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="453.0" layoutY="104.0" prefHeight="17.0" prefWidth="94.0" text="Marital Status:" textFill="WHITE">
+            <Label id="label" layoutX="453.0" layoutY="104.0" prefHeight="17.0" prefWidth="94.0" text="Marital Status:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="27.0" layoutY="110.0" prefHeight="17.0" prefWidth="94.0" text="Login Details:" textFill="WHITE">
+            <Label id="label" layoutX="27.0" layoutY="110.0" prefHeight="17.0" prefWidth="94.0" text="Login Details:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="28.0" layoutY="214.0" prefHeight="17.0" prefWidth="94.0" text="Name:" textFill="WHITE">
+            <Label id="label" layoutX="28.0" layoutY="214.0" prefHeight="17.0" prefWidth="94.0" text="Name:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="27.0" layoutY="349.0" prefHeight="17.0" prefWidth="94.0" text="Address:" textFill="WHITE">
+            <Label id="label" layoutX="27.0" layoutY="349.0" prefHeight="17.0" prefWidth="94.0" text="Address:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <Button id="button" fx:id="addPhone" layoutX="785.0" layoutY="317.0" mnemonicParsing="false" onAction="#handlePhoneNumber" text="+" />
-            <Label id="label" layoutX="453.0" layoutY="265.0" prefHeight="19.0" prefWidth="134.0" text="Contact Details:" textFill="WHITE">
+            <Label id="label" layoutX="453.0" layoutY="265.0" prefHeight="19.0" prefWidth="134.0" text="Contact Details:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="453.0" layoutY="191.0" prefHeight="17.0" prefWidth="94.0" text="Date of Birth:" textFill="WHITE">
+            <Label id="label" layoutX="453.0" layoutY="191.0" prefHeight="17.0" prefWidth="94.0" text="Date of Birth:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -117,7 +117,7 @@
          <children>
             <TextField id="text_field" fx:id="basic_salary" layoutX="25.0" layoutY="60.0" prefHeight="25.0" prefWidth="365.0" promptText="Basic Salary *" />
             <DatePicker id="datePicker" fx:id="empdate" layoutX="25.0" layoutY="132.0" prefHeight="25.0" prefWidth="365.0" promptText="yyyy/MM/dd" />
-            <RadioButton id="radioButton" fx:id="adminRadio" layoutX="135.0" layoutY="202.0" mnemonicParsing="false" selected="true" text="Administrator" textFill="WHITE">
+            <RadioButton id="radioButton" fx:id="adminRadio" layoutX="135.0" layoutY="202.0" mnemonicParsing="false" selected="true" text="Administrator">
                <toggleGroup>
                   <ToggleGroup fx:id="userGroup" />
                </toggleGroup>
@@ -125,23 +125,23 @@
                   <Font size="13.0" />
                </font>
             </RadioButton>
-            <RadioButton id="radioButton" fx:id="doctorRadio" layoutX="274.0" layoutY="202.0" mnemonicParsing="false" text="Doctor" textFill="WHITE" toggleGroup="$userGroup">
+            <RadioButton id="radioButton" fx:id="doctorRadio" layoutX="274.0" layoutY="202.0" mnemonicParsing="false" text="Doctor" toggleGroup="$userGroup">
                <font>
                   <Font size="13.0" />
                </font>
             </RadioButton>
-            <Label blendMode="SOFT_LIGHT" layoutX="19.0" layoutY="10.0" text="Employment Information" textFill="#0b0122" textOverrun="CLIP">
+            <Label blendMode="SOFT_LIGHT" layoutX="19.0" layoutY="10.0" text="Employment Information" textOverrun="CLIP">
                <font>
-                  <Font name="Cambria Bold" size="17.0" />
+                  <Font name="Cambria Bold" size="16.0" />
                </font>
             </Label>
             <Line endX="280.0" fill="#140065" layoutX="117.0" layoutY="35.0" startX="-100.0" stroke="#100051" strokeLineCap="ROUND" strokeLineJoin="BEVEL" />
-            <Label id="label" layoutX="25.0" layoutY="113.0" prefHeight="19.0" prefWidth="161.0" text="Employment Date:" textFill="WHITE">
+            <Label id="label" layoutX="25.0" layoutY="113.0" prefHeight="19.0" prefWidth="161.0" text="Employment Date:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label id="label" layoutX="25.0" layoutY="202.0" prefHeight="19.0" prefWidth="94.0" text="User Type:" textFill="WHITE">
+            <Label id="label" layoutX="25.0" layoutY="202.0" prefHeight="19.0" prefWidth="94.0" text="User Type:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -162,6 +162,5 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button id="button" fx:id="homeButton" layoutX="1235.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleHomeButton" prefHeight="33.0" prefWidth="94.0" text="HOME" />
    </children>
 </AnchorPane>

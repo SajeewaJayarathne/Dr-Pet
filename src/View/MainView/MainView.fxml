@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+
+<BorderPane id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.MainViewControl">
+   <stylesheets>
+      <URL value="@../Stylesheets/mainStylesheet.css" />
+   </stylesheets>
+   <top>
+      <AnchorPane id="transparentLayer" prefHeight="60.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Label id="imageLabel" layoutY="1.0" prefHeight="60.0" prefWidth="122.0" />
+            <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="342.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="576.0" text="CLINIC MANAGEMENT SYSTEM" />
+            <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1008.0" prefHeight="60.0" prefWidth="250.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold Italic" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane id="transparentLayer" minWidth="274.0" prefHeight="709.0" prefWidth="274.0" style="-fx-max-width: 320; -fx-min-width: 300;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Button id="menuButton" fx:id="patientButton" layoutX="25.0" layoutY="28.0" mnemonicParsing="false" onAction="#gotoPatientView" prefHeight="45.0" prefWidth="250.0" text="PATIENTS" />
+            <Button id="menuButton" fx:id="clientButton" layoutX="25.0" layoutY="73.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="CLIENTS" />
+            <Button id="menuButton" layoutX="25.0" layoutY="118.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="DOCTORS" />
+            <Button id="menuButton" layoutX="25.0" layoutY="163.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="MEDICAL RECORDS" />
+            <Button id="menuButton" layoutX="25.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="PAYMENTS" />
+            <Button id="menuButton" layoutX="25.0" layoutY="253.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="NOTIFICATIONS" />
+            <Button id="menuButton" layoutX="25.0" layoutY="298.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="MESSAGES" />
+            <Button id="menuButton" layoutX="25.0" layoutY="358.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="MY PROFILE" />
+            <Button id="menuButton" layoutX="25.0" layoutY="416.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="SEARCH" />
+            <Button id="menuButton" layoutX="25.0" layoutY="472.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="LOGOUT" />
+            <Button id="menuButton" layoutX="25.0" layoutY="529.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="BACKUP" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane id="transparentLayer" minWidth="247.0" prefHeight="709.0" prefWidth="247.0" style="-fx-max-width: 320; -fx-min-width: 300;" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Label id="usernameLabel" fx:id="usernameLabel1" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="8.0" prefHeight="28.0" prefWidth="279.0" text="FOLLOW-UP" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Cambria Bold" size="20.0" />
+               </font>
+            </Label>
+            <ListView id="followUpListView" layoutX="11.0" layoutY="36.0" prefHeight="662.0" prefWidth="280.0" />
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <StackPane fx:id="contentLoader" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </StackPane>
+   </center>
+</BorderPane>
