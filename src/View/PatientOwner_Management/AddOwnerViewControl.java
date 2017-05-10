@@ -1,8 +1,5 @@
 package View.PatientOwner_Management;
 
-import Model.AddPatientModel;
-import Model.GetOwnerModel;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,13 +9,10 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddOwnerViewControl implements Initializable{
 
-    AddPatientModel addPatientModel;
-    GetOwnerModel getOwnerModel;
 
     @FXML
     Button createButton, clearButton, addNewOwner, homeButton;
@@ -66,7 +60,7 @@ public class AddOwnerViewControl implements Initializable{
                 gender = "female";
             }
 
-            addPatientModel.addPatient(ownerIDCombo.getSelectionModel().getSelectedItem().toString(), patient_name.getText(), petTypeCombo.getSelectionModel().getSelectedItem().toString(), breed.getText(), dob.getValue().toString());
+//            addPatientModel.addPatient(ownerIDCombo.getSelectionModel().getSelectedItem().toString(), patient_name.getText(), petTypeCombo.getSelectionModel().getSelectedItem().toString(), breed.getText(), dob.getValue().toString());
         }
     }
 
@@ -90,30 +84,13 @@ public class AddOwnerViewControl implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //get all current Owner IDs
-        try {
-            getOwnerModel = new GetOwnerModel();
-            ArrayList<String> ownerIDs = getOwnerModel.getOwnerIDs();
 
-            ownerIDData = FXCollections.observableArrayList();
-
-            //adding data to the comboBoxList
-            for (int i = 0; i < ownerIDs.size(); i++){
-                ownerIDData.add(ownerIDs.get(i));
-            }
-
-            ownerIDCombo.setItems(ownerIDData);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
     public void handleOwnerDetails() throws SQLException {
         //when an owner ID is clicked
-        String ownerName = getOwnerModel.getOwnerName(ownerIDCombo.getSelectionModel().getSelectedItem().toString());
-        ownerNameLabel.setText(ownerName);
+//        String ownerName = getOwnerModel.getOwnerName(ownerIDCombo.getSelectionModel().getSelectedItem().toString());
+//        ownerNameLabel.setText(ownerName);
     }
 }

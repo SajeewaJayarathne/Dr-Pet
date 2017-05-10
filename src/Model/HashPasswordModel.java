@@ -12,18 +12,15 @@ public class HashPasswordModel {
 
     public String hashFunction(String password){
 
-        System.out.println(password);
 
         String hashedPassword = "";
         try {
-            System.out.println(password);
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(password.getBytes("UTF-8"));
 
             byte[] digest = md.digest();
 
             hashedPassword = String.format("%064x", new BigInteger(1, digest));
-
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {

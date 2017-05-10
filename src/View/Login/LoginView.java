@@ -4,8 +4,11 @@ package View.Login;/**
 
 import Model.LoginAuthenticationModel;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
@@ -18,8 +21,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 
@@ -62,7 +67,43 @@ public class LoginView extends Application{
         //Action for Login Button
         loginButton.setOnAction(e -> {
             try {
-                login(usernameInput.getText(), passwordInput.getText().toString(), primaryStage);
+                Parent root;
+                loginAuthenticationModel = new LoginAuthenticationModel();
+
+                boolean authenticated = loginAuthenticationModel.authenticate(usernameInput.getText(), passwordInput.getText().toString());
+
+                if (authenticated){
+                    System.out.println("login successful!");
+                    primaryStage.close();
+
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    Stage mainStage = new Stage();
+                    try {
+                        root = fxmlLoader.load(getClass().getResource("../MainView/MainView.fxml"));
+                        mainStage.setTitle("Dr.Pet");
+
+                        Scene scene = new Scene(root, 1280, 800);
+                        mainStage.setScene(scene);
+
+
+                        mainStage.setMaximized(true);
+                        mainStage.show();
+
+                        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                        mainStage.setX((primScreenBounds.getWidth() - mainStage.getWidth()) / 2);
+                        mainStage.setY((primScreenBounds.getHeight() - mainStage.getHeight()) / 2);
+
+                    } catch (IOException evt) {
+                        evt.printStackTrace();
+                    }
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR LOGIN");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Username and/or Password Mismatch!");
+                    alert.showAndWait();
+                }
             } catch (SQLException e1) {
                 e1.printStackTrace();
             } catch (ClassNotFoundException e1) {
@@ -128,22 +169,45 @@ public class LoginView extends Application{
 
 //        primaryStage.setResizable(false);
 
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
-    private void login(String username, String password, Stage stage) throws SQLException, ClassNotFoundException {
-        loginAuthenticationModel = new LoginAuthenticationModel();
-
-        boolean authenticated = loginAuthenticationModel.authenticate(username, password);
-
-        if (authenticated){
-            System.out.println("login successful!");
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ERROR LOGIN");
-            alert.setHeaderText(null);
-            alert.setContentText("Username and/or Password Mismatch!");
-            alert.showAndWait();
-        }
-    }
+//    private void login(String username, String password, Stage stage) throws SQLException, ClassNotFoundException {
+//        loginAuthenticationModel = new LoginAuthenticationModel();
+//
+//        boolean authenticated = loginAuthenticationModel.authenticate(username, password);
+//
+//        if (authenticated){
+//            System.out.println("login successful!");
+//            stage.close();
+//
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            Stage mainStage = new Stage();
+//            try {
+//                fxmlLoader.load(getClass().getResource("MainView.fxml"));
+//                mainStage.setTitle("Dr.Pet");
+//
+//                Scene scene = new Scene(root, 1280, 800);
+//                mainStage.setScene(scene);
+//
+//
+//                mainStage.setMaximized(true);
+//                mainStage.show();
+//
+//                Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+//                mainStage.setX((primScreenBounds.getWidth() - mainStage.getWidth()) / 2);
+//                mainStage.setY((primScreenBounds.getHeight() - mainStage.getHeight()) / 2);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//        } else {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("ERROR LOGIN");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Username and/or Password Mismatch!");
+//            alert.showAndWait();
+//        }
+//    }
 }

@@ -75,7 +75,7 @@ public class LoginAuthenticationModel {
         setInputPassword(inputPassword);
 
         //call hash function
-        inputHashedPassword = hashPasswordModel.hashFunction(getInputPassword());
+        inputHashedPassword = hashPasswordModel.hashFunction(inputPassword);
 
         //get details from the Database
         boolean foundUser = this.findUserName();
@@ -83,8 +83,9 @@ public class LoginAuthenticationModel {
         if (foundUser){
             String[] userDetails = getUserDetails();
 
-            if (getInputHashedPassword().equals(userDetails[0])){
-                if (userDetails[1].equals("1")){
+
+            if (inputHashedPassword.equals(userDetails[0])){
+                if (userDetails[1].equals("true")){
                     authenticated = true;
                 }
             }

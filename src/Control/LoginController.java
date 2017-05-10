@@ -23,8 +23,10 @@ public class LoginController {
         boolean foundUser = false;
         resultSet = statement.executeQuery("SELECT username FROM user_login_details");
 
+
         while (resultSet.next()){
-            if (resultSet.getString(1).equals(userName)){
+            if (resultSet.getString("username").equals(userName)){
+                System.out.println("equal username:" + resultSet.getString("username"));
                 foundUser = true;
                 break;
             }
