@@ -75,7 +75,7 @@ public class OwnerController {
         String ownerFName = "";
         String ownerMName = "";
         String ownerLName = "";
-        String oName = "";
+        String oName;
         try {
             preparedStatement = connection.prepareStatement("SELECT first_name, middle_initials, last_name FROM owner_info WHERE own_id=?");
             preparedStatement.setString(1, ownerID);
@@ -90,6 +90,7 @@ public class OwnerController {
             e.printStackTrace();
         }
         oName = ownerFName+" "+ownerMName+" "+ownerLName;
+        System.out.println(oName);
         return oName;
     }
 

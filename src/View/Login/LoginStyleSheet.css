@@ -11,7 +11,7 @@
     -fx-background-image: url("../background.jpg");
 }
 
-#loginButton {
+#button {
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
@@ -19,6 +19,7 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-font-size: 13pt;
     -fx-font-weight: bold;
+    -fx-pref-width: 150px;
 }
 
 #button:hover {

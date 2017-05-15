@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -19,8 +21,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class userViewControl implements Initializable{
+
     User user, user2;
-    Phone phone;
     private SpecialControl specialControl;
     PhoneController phoneController;
     private UserController userController;
@@ -29,7 +31,10 @@ public class userViewControl implements Initializable{
     private int addButtonClickCount = 0;
 
     @FXML
-    Button createButton, clearButton, addPhone;
+    AnchorPane rootLayout;
+
+    @FXML
+    Button createButton, clearButton, addPhone, editButton;
 
     @FXML
     TextField userID, first_name, middle_initials, last_name, street_no, street_name, city, state, country, nic, email, phone1, phone2, phone3, phone4, basic_salary;
@@ -42,6 +47,18 @@ public class userViewControl implements Initializable{
 
     @FXML
     PasswordField password, confirm_password;
+
+    @FXML
+    TableView<User> tableDoctorDetails;
+
+    @FXML
+    TableColumn<User, String> tableColID, tableColName, tableColAddress, tableColPhone, tableColEmail, tableColGender, tableColType;
+
+    @FXML
+    Tab viewDoctorTab, addDoctorTab, editDoctorTab;
+
+    @FXML
+    TabPane tabPane;
 
     @FXML
     public void handleCreateUser() throws SQLException, ClassNotFoundException, FileNotFoundException, ParseException {
@@ -193,7 +210,27 @@ public class userViewControl implements Initializable{
         loadUsers();
     }
 
-    private void loadUsers() {
 
+    private void loadUsers() {
+        editButton.setOnAction(e -> editButtonClicked());
+
+        tableColID.setCellValueFactory(new PropertyValueFactory<>("user_id"));
+        tableColName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        tableColAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tableColPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        tableColEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tableColType.setCellValueFactory(new PropertyValueFactory<>("user_type"));
+        tableDoctorDetails.setItems(userObservableList);
+    }
+
+    private void editButtonClicked() {
+        User u = tableDoctorDetails.getSelectionModel().getSelectedItem();
+        tabPane.getSelectionModel().select(editDoctorTab);
+    }
+
+    @FXML
+    public void handleCloseButton(){
+        rootLayout.getChildren().clear();
     }
 }

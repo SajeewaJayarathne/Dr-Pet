@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -31,6 +32,8 @@ public class patientViewControl implements Initializable{
     private SpecialControl specialControl;
     private Patient patient;
 
+    @FXML
+    AnchorPane rootLayout;
 
     @FXML
     Button createButton, clearButton, addNewOwner, editButton, addNewOwner_edit, updateButton, clearButton_edit;
@@ -231,7 +234,7 @@ public class patientViewControl implements Initializable{
 
     @FXML
     public void handleCloseButton(){
-        MainViewControl mainViewControl = new MainViewControl();
-        mainViewControl.handleCloseButton();
+        rootLayout.getChildren().clear();
+
     }
 }

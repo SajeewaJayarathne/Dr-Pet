@@ -31,7 +31,7 @@ import java.sql.SQLException;
 
 public class LoginView extends Application{
 
-    LoginAuthenticationModel loginAuthenticationModel;
+    private LoginAuthenticationModel loginAuthenticationModel;
     public static void main(String[] args) {
         launch(args);
     }
@@ -63,6 +63,7 @@ public class LoginView extends Application{
         final PasswordField passwordInput = new PasswordField();
         passwordInput.setPromptText("Password");
         Button loginButton = new Button("Login");
+        Button forgotPassword = new Button("Forgot Password");
 
         //Action for Login Button
         loginButton.setOnAction(e -> {
@@ -110,9 +111,16 @@ public class LoginView extends Application{
                 e1.printStackTrace();
             }
         });
+        //----//
+
+        //Action for forgotPassword Button
+        forgotPassword.setOnAction(e -> {
+
+        });
+        //----//
 
         //Adding Nodes to vBox1
-        vBox1.getChildren().addAll(usernameInput, passwordInput, loginButton);
+        vBox1.getChildren().addAll(usernameInput, passwordInput, loginButton, forgotPassword);
         vBox1.setAlignment(Pos.CENTER);
 
 
@@ -144,7 +152,8 @@ public class LoginView extends Application{
         //Add ID's to Nodes
         borderPane.setId("borderPane");
         vBox1.setId("root");
-        loginButton.setId("loginButton");
+        loginButton.setId("button");
+        forgotPassword.setId("button");
         text.setId("text");
         logoLabel.setId("logo");
 

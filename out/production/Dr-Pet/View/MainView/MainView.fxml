@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-
 <BorderPane id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.MainViewControl">
    <stylesheets>
       <URL value="@../Stylesheets/mainStylesheet.css" />
@@ -22,8 +18,12 @@
             <Insets left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <Label id="imageLabel" layoutY="1.0" prefHeight="60.0" prefWidth="122.0" />
-            <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="342.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="576.0" text="CLINIC MANAGEMENT SYSTEM" />
+            <ImageView id="imageLabel" fitHeight="60.0" fitWidth="122.0"  layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../full_logo_small.PNG" />
+               </image>
+            </ImageView>
+            <Label id="heading" alignment="CENTER" contentDisplay="CENTER" layoutX="342.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="600.0" text="PATIENT MANAGEMENT SYSTEM" />
             <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1008.0" prefHeight="60.0" prefWidth="250.0" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold Italic" size="13.0" />
@@ -41,7 +41,7 @@
             <Button id="menuButton" fx:id="patientButton" layoutX="25.0" layoutY="28.0" mnemonicParsing="false" onAction="#gotoPatientView" prefHeight="45.0" prefWidth="250.0" text="PATIENTS" />
             <Button id="menuButton" fx:id="clientButton" layoutX="25.0" layoutY="73.0" mnemonicParsing="false" onAction="#gotoClientView" prefHeight="45.0" prefWidth="250.0" text="CLIENTS" />
             <Button id="menuButton" fx:id="userButton" layoutX="25.0" layoutY="118.0" mnemonicParsing="false" onAction="#gotoDoctorView" prefHeight="45.0" prefWidth="250.0" text="DOCTORS" />
-            <Button id="menuButton" layoutX="25.0" layoutY="163.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="MEDICAL RECORDS" />
+            <Button id="menuButton" fx:id="medicalRecordsButton" layoutX="25.0" layoutY="163.0" mnemonicParsing="false" onAction="#gotoMedicalRecordsView" prefHeight="45.0" prefWidth="250.0" text="MEDICAL RECORDS" />
             <Button id="menuButton" layoutX="25.0" layoutY="208.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="PAYMENTS" />
             <Button id="menuButton" layoutX="25.0" layoutY="253.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="NOTIFICATIONS" />
             <Button id="menuButton" layoutX="25.0" layoutY="298.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="250.0" text="MESSAGES" />

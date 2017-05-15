@@ -14,7 +14,7 @@ public class MainViewControl implements Initializable {
 
 
     @FXML
-    Pane contentLoader;
+    public Pane contentLoader;
 
 
     @Override
@@ -55,7 +55,13 @@ public class MainViewControl implements Initializable {
     }
 
     @FXML
-    public void handleCloseButton(){
-        contentLoader.getChildren().clear();
+    public void gotoMedicalRecordsView(ActionEvent event){
+        try {
+            contentLoader.getChildren().clear();
+            contentLoader.getChildren().add(FXMLLoader.load(getClass().getResource("MedicalRecordsView.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

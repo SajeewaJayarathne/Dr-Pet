@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+
+<AnchorPane id="contentKeeper" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="381.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.FollowUpViewControl">
+   <stylesheets>
+      <URL value="@../Stylesheets/mainStylesheet.css" />
+   </stylesheets>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="316.0" style="-fx-background-color: SEASHELL;" text="Add Follow-Up">
+         <font>
+            <Font name="Trebuchet MS" size="22.0" />
+         </font>
+      </Label>
+      <Label id="label" layoutX="14.0" layoutY="145.0" prefHeight="19.0" prefWidth="44.0" text="Date:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <DatePicker id="datePicker" fx:id="followUpDate" layoutX="69.0" layoutY="141.0" prefHeight="27.0" prefWidth="261.0" promptText="yyyy/MM/dd" />
+      <TextField id="text_field" fx:id="reason" layoutX="69.0" layoutY="102.0" prefHeight="27.0" prefWidth="261.0" promptText="Follow-Up *" />
+      <Label id="label" layoutX="14.0" layoutY="106.0" prefHeight="19.0" prefWidth="53.0" text="Reason:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label id="label" layoutX="14.0" layoutY="181.0" prefHeight="17.0" prefWidth="94.0" text="Description:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="followUpDescription" layoutX="14.0" layoutY="204.0" prefHeight="113.0" prefWidth="316.0" />
+      <Button id="button" fx:id="createFollowUpButton" graphicTextGap="10.0" layoutX="55.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleCreateFollowUp" prefHeight="44.0" prefWidth="238.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CREATE FOLLOW UP">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../create.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label id="label" layoutX="14.0" layoutY="72.0" prefHeight="19.0" prefWidth="53.0" text="Case ID:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label id="label" fx:id="followUpID" layoutX="69.0" layoutY="72.0" prefHeight="19.0" prefWidth="261.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

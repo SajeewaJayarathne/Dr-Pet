@@ -3,6 +3,8 @@ package Control;
 import javafx.scene.control.Alert;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Sajeewa on 5/1/2017.
@@ -43,5 +45,21 @@ public class SpecialControl {
         } else {
             return 0;
         }
+    }
+
+    public boolean getIsActiveBoolean(int is_active){
+        if (is_active==1){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //get current date
+    public String getCurrentDate(){
+        LocalDate localDate = LocalDate.now();
+        String date = DateTimeFormatter.ofPattern("yyyy-MMM-dd").format(localDate);
+
+        return date;
     }
 }

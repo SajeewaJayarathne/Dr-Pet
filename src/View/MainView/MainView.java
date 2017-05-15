@@ -1,4 +1,5 @@
-package View.MainView;/**
+package View.MainView;
+/**
  * Created by Sajeewa on 3/26/2017.
  */
 
@@ -62,6 +63,7 @@ public class MainView extends Application {
 //
 //
 
+        primaryStage.setTitle("Dr. Pet");
         Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 //        AnchorPane rootLayout = (AnchorPane) root.load();
         Scene scene = new Scene(root, 1280, 800);

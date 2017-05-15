@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -12,178 +13,296 @@
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
 
-<AnchorPane id="contentKeeper" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="608.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.patientViewControl">
+<AnchorPane id="contentKeeper" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="608.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.MedicalRecordsViewControl">
    <stylesheets>
       <URL value="@../Stylesheets/mainStylesheet.css" />
    </stylesheets>
    <children>
-      <TabPane id="tabbedPane" fx:id="tabPane" prefHeight="608.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane id="tabbedPane" fx:id="tabPane" prefHeight="608.0" prefWidth="708.0" style="-fx-background-color: WHITE;" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab id="tab" fx:id="viewPatientsTab" closable="false" text="Examination">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <Tab id="tab" fx:id="viewMedicalRecordsTab" text="View All Medical Records">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="559.0" prefWidth="688.0">
                      <children>
-                        <Button id="button" fx:id="editButton" layoutX="268.0" layoutY="514.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="153.0" text="EDIT PATIENT">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Button>
-                        <TextField id="text_field" fx:id="patientID" layoutX="26.0" layoutY="21.0" prefHeight="27.0" prefWidth="228.0" promptText="Patient ID *" />
-                        <Label id="label" layoutX="26.0" layoutY="67.0" prefHeight="19.0" prefWidth="130.0" text="Owner Complaints:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label id="label" layoutX="363.0" layoutY="67.0" prefHeight="19.0" prefWidth="130.0" text="Symptoms:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label id="label" layoutX="26.0" layoutY="269.0" prefHeight="19.0" prefWidth="130.0" text="Tests:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label id="label" layoutX="363.0" layoutY="269.0" prefHeight="19.0" prefWidth="130.0" text="Diagnosis:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextArea layoutX="26.0" layoutY="86.0" prefHeight="167.0" prefWidth="289.0" />
-                        <TextArea layoutX="363.0" layoutY="86.0" prefHeight="167.0" prefWidth="289.0" />
-                        <TextArea layoutX="363.0" layoutY="291.0" prefHeight="167.0" prefWidth="289.0" />
-                        <TextArea layoutX="26.0" layoutY="291.0" prefHeight="167.0" prefWidth="289.0" />
+                        <TableView fx:id="tableMedicalRecordDetails" prefHeight="503.0" prefWidth="688.0">
+                           <columns>
+                              <TableColumn fx:id="tableColCaseNo" prefWidth="61.0" text="Case #" />
+                              <TableColumn fx:id="tableColDate" prefWidth="107.0" text="Date" />
+                              <TableColumn fx:id="tableColPatientID" prefWidth="131.0" text="Patient ID" />
+                              <TableColumn fx:id="tableColDoctor" prefWidth="116.0" text="Doctor Examined" />
+                              <TableColumn fx:id="tableColCaseType" prefWidth="87.0" text="Case Type" />
+                              <TableColumn fx:id="tableColComments" prefWidth="184.0" text="Comments" />
+                           </columns>
+                        </TableView>
+                        <Button id="button" fx:id="addRecord" layoutX="366.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleAddRecord" text="ADD NEW RECORD" />
+                        <Button id="button" fx:id="viewRecord" layoutX="112.0" layoutY="514.0" mnemonicParsing="false" onAction="#handleViewRecord" text="VIEW FULL RECORD" />
                      </children>
                   </AnchorPane>
-               </content></Tab>
-          <Tab id="tab" fx:id="addPatientTab" closable="false" text="Treatment">
-               <content>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="691.0" stylesheets="../Stylesheets/mainStylesheet.css">
-                     <children>
-                        <ComboBox fx:id="ownerIDCombo" layoutX="33.0" layoutY="99.0" onContextMenuRequested="#handleOwnerDetails" prefHeight="25.0" prefWidth="204.0" promptText="Owner" />
-                        <Button id="button" fx:id="addNewOwner" layoutX="245.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleNewOwner" text="+" />
-                        <Label id="text_field" fx:id="ownerNameLabel" layoutX="33.0" layoutY="136.0" prefHeight="25.0" prefWidth="279.0">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextField id="text_field" fx:id="patient_name" layoutX="34.0" layoutY="188.0" prefHeight="27.0" prefWidth="280.0" promptText="Patient Name *" />
-                        <ImageView fx:id="imageLoader" fitHeight="393.0" fitWidth="438.0" layoutX="247.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../pets.png" />
-                           </image>
-                        </ImageView>
-                        <RadioButton id="radioButton" fx:id="maleRadio" layoutX="139.0" layoutY="252.0" mnemonicParsing="false" selected="true" text="Male">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="genderGroup" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="243.0" layoutY="252.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </RadioButton>
-                        <ComboBox fx:id="petTypeCombo" layoutX="378.0" layoutY="46.0" prefHeight="25.0" prefWidth="280.0" promptText="Type" />
-                        <TextField id="text_field" fx:id="breed" layoutX="378.0" layoutY="98.0" prefHeight="27.0" prefWidth="280.0" promptText="Breed *" />
-                        <DatePicker id="datePicker" fx:id="dob" layoutX="378.0" layoutY="188.0" prefHeight="27.0" prefWidth="280.0" promptText="yyyy/MM/dd" />
-                        <Label id="label" layoutX="39.0" layoutY="252.0" prefHeight="17.0" prefWidth="70.0" text="Gender:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Label id="label" layoutX="378.0" layoutY="161.0" prefHeight="17.0" prefWidth="94.0" text="Date of Birth:">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <Button id="button" fx:id="createButton" graphicTextGap="10.0" layoutX="34.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleCreatePatient" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CREATE">
-                           <font>
-                              <Font name="Cambria Bold" size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../create.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button id="button" fx:id="clearButton" graphicTextGap="10.0" layoutX="34.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CLEAR">
-                           <font>
-                              <Font name="Cambria Bold" size="16.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../clear.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-               </content>
+              </content>
             </Tab>
-            <Tab id="tab" fx:id="editPatientTab" closable="false" text="Prescription">
+          <Tab id="tab" fx:id="addEditMedicalRecordTab" closable="false" text="Add/Edit Medical RecordRecord">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TextField id="text_field" fx:id="patient_name_edit" layoutX="23.0" layoutY="91.0" prefHeight="27.0" prefWidth="301.0" promptText="Patient Name" />
-                        <Button id="button" fx:id="addNewOwner_edit" layoutX="253.0" layoutY="144.0" mnemonicParsing="false" onAction="#handleNewOwner" text="+" />
-                        <ComboBox fx:id="ownerIDCombo_edit" layoutX="25.0" layoutY="148.0" onContextMenuRequested="#handleOwnerDetails" prefHeight="25.0" prefWidth="217.0" promptText="Owner" />
-                        <Label id="label" layoutX="23.0" layoutY="26.0" prefHeight="32.0" prefWidth="78.0" text="Patient ID:" />
-                        <Label id="label" fx:id="patient_id" layoutX="117.0" layoutY="26.0" prefHeight="32.0" prefWidth="210.0" />
-                        <Label layoutX="356.0" layoutY="72.0" prefHeight="17.0" prefWidth="94.0" text="Date of Birth:">
+                        <TextField id="text_field" fx:id="patientID" layoutX="239.0" layoutY="14.0" prefHeight="27.0" prefWidth="186.0" promptText="Patient ID *" />
+                        <TextField id="text_field" fx:id="doctorID" layoutX="457.0" layoutY="14.0" prefHeight="27.0" prefWidth="187.0" promptText="Doctor ID *" />
+                        <Label id="label" layoutX="31.0" layoutY="55.0" prefHeight="19.0" prefWidth="42.0" text="Date:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label id="label" layoutX="25.0" layoutY="211.0" prefHeight="17.0" prefWidth="70.0" text="Gender:">
+                        <Label id="label" layoutX="31.0" layoutY="18.0" prefHeight="19.0" prefWidth="74.0" text="Case No:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <DatePicker id="datePicker" fx:id="dob_edit" layoutX="356.0" layoutY="91.0" prefHeight="27.0" prefWidth="295.0" promptText="yyyy/MM/dd" />
-                        <RadioButton id="radioButton" fx:id="femaleRadio_edit" layoutX="206.0" layoutY="211.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
+                        <Label id="label" layoutX="318.0" layoutY="55.0" prefHeight="19.0" prefWidth="71.0" text="Case Type:">
                            <font>
-                              <Font size="13.0" />
+                              <Font name="System Bold" size="13.0" />
                            </font>
-                        </RadioButton>
-                        <RadioButton id="radioButton" fx:id="maleRadio_edit" layoutX="117.0" layoutY="211.0" mnemonicParsing="false" selected="true" text="Male">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
+                        </Label>
+                        <RadioButton id="radioButton" fx:id="femaleRadio1" layoutX="571.0" layoutY="55.0" mnemonicParsing="false" text="Sickness">
                            <toggleGroup>
-                              <ToggleGroup fx:id="genderGroup1" />
+                              <ToggleGroup fx:id="caseTypeGroup" />
                            </toggleGroup>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
                         </RadioButton>
-                        <DatePicker id="datePicker" fx:id="dod_edit" layoutX="356.0" layoutY="193.0" prefHeight="27.0" prefWidth="295.0" promptText="yyyy/MM/dd" />
-                        <Label layoutX="356.0" layoutY="174.0" prefHeight="19.0" prefWidth="104.0" text="Date of Death:">
+                        <RadioButton id="radioButton" fx:id="maleRadio1" layoutX="399.0" layoutY="55.0" mnemonicParsing="false" selected="true" text="General Vaccination" toggleGroup="$caseTypeGroup">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </RadioButton>
+                        <TabPane layoutX="31.0" layoutY="89.0" prefHeight="467.0" prefWidth="628.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab id="tab" fx:id="vaccineTab" text="General Vaccination">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="628.0" style="-fx-background-color: SEASHELL;">
+                                       <children>
+                                          <TextField id="text_field" fx:id="vaccine" layoutX="42.0" layoutY="21.0" prefHeight="27.0" prefWidth="200.0" promptText="Vaccine" />
+                                          <Label id="label" alignment="BOTTOM_LEFT" layoutX="42.0" layoutY="218.0" prefHeight="19.0" prefWidth="137.0" text="Special Comments:">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="commentsText" layoutX="42.0" layoutY="245.0" prefHeight="118.0" prefWidth="358.0" />
+                                          <Button id="button" fx:id="saveVaccineButton" graphicTextGap="10.0" layoutX="42.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleSaveVaccine" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="SAVE">
+                                             <font>
+                                                <Font name="Cambria Bold" size="16.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../create.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <ImageView fx:id="imageLoader2" fitHeight="259.0" fitWidth="186.0" layoutX="415.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../cat.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ListView fx:id="vaccineList" layoutX="351.0" layoutY="18.0" onKeyReleased="#handleDeleteVaccine" prefHeight="200.0" prefWidth="235.0" />
+                                          <Button id="button" fx:id="addVaccineButton" graphicTextGap="10.0" layoutX="255.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleAddVaccine" prefHeight="32.0" prefWidth="85.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="&gt;&gt;">
+                                             <font>
+                                                <Font name="Cambria Bold" size="16.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab id="tab" fx:id="sicknessTab" text="Sickness">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="628.0" style="-fx-background-color: SEASHELL;">
+                                       <children>
+                                          <TabPane prefHeight="382.0" prefWidth="629.0" tabClosingPolicy="UNAVAILABLE">
+                                            <tabs>
+                                              <Tab id="tab" fx:id="examinationTab" text="Examination">
+                                                <content>
+                                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="label" layoutX="28.0" layoutY="20.0" prefHeight="19.0" prefWidth="130.0" text="Owner Complaints:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextArea fx:id="complainTextArea" layoutX="28.0" layoutY="45.0" prefHeight="125.0" prefWidth="574.0" />
+                                                            <TextArea fx:id="symptomsTextArea" layoutX="28.0" layoutY="207.0" prefHeight="125.0" prefWidth="574.0" />
+                                                            <Label id="label" layoutX="28.0" layoutY="182.0" prefHeight="19.0" prefWidth="130.0" text="Symptoms:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children></AnchorPane>
+                                                </content>
+                                              </Tab>
+                                                <Tab id="tab" fx:id="testTab" text="Tests">
+                                                  <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Label id="label" fx:id="browseTestFileLabel" layoutX="301.0" layoutY="19.0" onMouseClicked="#handleTestFileChooser" prefHeight="20.0" prefWidth="52.0" style="-fx-underline: true;" text="Browse">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
+                                                            </Label>
+                                                            <TextField id="text_field" fx:id="testResult" layoutX="172.0" layoutY="15.0" prefHeight="27.0" prefWidth="127.0" promptText="Result (as PDF File)" />
+                                                            <TextField id="text_field" fx:id="testDone" layoutX="9.0" layoutY="15.0" prefHeight="27.0" prefWidth="156.0" promptText="Test Done *" />
+                                                            <TextField id="text_field" fx:id="testNotes" layoutX="360.0" layoutY="15.0" prefHeight="27.0" prefWidth="170.0" promptText="Note" />
+                                                            <TableView fx:id="tableTestDetails" layoutX="3.0" layoutY="50.0" onKeyReleased="#handleTestDeleteRow" prefHeight="258.0" prefWidth="623.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="tableColTestNo" prefWidth="35.0" text="#" />
+                                                                  <TableColumn fx:id="tableColTest" prefWidth="179.0" text="Test Done" />
+                                                                  <TableColumn fx:id="tableColResult" prefWidth="185.0" text="Result" />
+                                                                  <TableColumn fx:id="tableColNote" prefWidth="227.0" text="Note" />
+                                                               </columns>
+                                                            </TableView>
+                                                            <Button id="button" fx:id="testAddRowButton" graphicTextGap="10.0" layoutX="535.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAddTestRow" prefHeight="32.0" prefWidth="85.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="&gt;&gt;">
+                                                               <font>
+                                                                  <Font name="Cambria Bold" size="16.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </content>
+                                                </Tab>
+                                                <Tab id="tab" fx:id="diagnoseTab" closable="false" text="Diagnose">
+                                                   <content>
+                                                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="563.0" prefWidth="691.0" stylesheets="../Stylesheets/mainStylesheet.css">
+                                                         <children>
+                                                            <Label id="label" layoutX="28.0" layoutY="36.0" prefHeight="19.0" prefWidth="130.0" text="Diagnose:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextArea fx:id="diagnoseTextArea" layoutX="28.0" layoutY="65.0" prefHeight="204.0" prefWidth="574.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                              <Tab id="tab" fx:id="treatmentTab" closable="false" text="Treatment">
+                                                   <content>
+                                                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="337.0" prefWidth="629.0" stylesheets="../Stylesheets/mainStylesheet.css">
+                                                         <children>
+                                                            <ComboBox fx:id="treatmentTypeCombo" layoutX="27.0" layoutY="15.0" onContextMenuRequested="#handleTreatmentType" prefHeight="26.0" prefWidth="132.0" promptText="Treatment Type" visibleRowCount="4" />
+                                                            <TextField id="text_field" fx:id="treatmentName" layoutX="173.0" layoutY="15.0" prefHeight="27.0" prefWidth="180.0" promptText="Name *" />
+                                                            <TextField id="text_field" fx:id="dosage" layoutX="368.0" layoutY="15.0" prefHeight="27.0" prefWidth="134.0" promptText="Dosage *" />
+                                                            <TableView fx:id="tableTreatment" layoutX="1.0" layoutY="47.0" onKeyReleased="#handleTreatmentDeleteRow" prefHeight="148.0" prefWidth="627.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="tableColNo" prefWidth="68.0" text="#" />
+                                                                  <TableColumn fx:id="tableColTreatment" prefWidth="184.0" text="Treatment" />
+                                                                  <TableColumn fx:id="tableColTreatmentName" prefWidth="232.0" text="Name" />
+                                                                  <TableColumn fx:id="tableColDosage" prefWidth="142.0" text="Dosage" />
+                                                               </columns>
+                                                            </TableView>
+                                                            <Label id="label" layoutX="28.0" layoutY="203.0" prefHeight="19.0" prefWidth="130.0" text="Comments:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextArea fx:id="treatmentCommentTextArea" layoutX="28.0" layoutY="222.0" prefHeight="115.0" prefWidth="574.0" />
+                                                            <Button id="button" fx:id="addTreatmentRowButton" graphicTextGap="10.0" layoutX="517.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleAddTreatmentRow" prefHeight="32.0" prefWidth="85.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="&gt;&gt;">
+                                                               <font>
+                                                                  <Font name="Cambria Bold" size="16.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                                <Tab id="tab" fx:id="prescriptionTab" closable="false" text="Prescription">
+                                                   <content>
+                                                      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Button id="button" fx:id="issuedAddRowButton" graphicTextGap="10.0" layoutX="530.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleAddIssuedRow" prefHeight="32.0" prefWidth="85.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="&gt;&gt;">
+                                                               <font>
+                                                                  <Font name="Cambria Bold" size="16.0" />
+                                                               </font>
+                                                            </Button>
+                                                            <TableView fx:id="tableDrugsIssued" layoutX="1.0" layoutY="43.0" onKeyReleased="#handleIssuedDeleteRow" prefHeight="124.0" prefWidth="627.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="tableColIssuedNo" prefWidth="68.0" text="#" />
+                                                                  <TableColumn fx:id="tableColIssuedDrugName" prefWidth="245.0" text="Drug Name" />
+                                                                  <TableColumn fx:id="tableColIssuedDosage" prefWidth="196.0" text="Dosage" />
+                                                                  <TableColumn fx:id="tableColIssuedQty" prefWidth="117.0" text="Quantity" />
+                                                               </columns>
+                                                            </TableView>
+                                                            <TextField id="text_field" fx:id="issuedDosage" layoutX="304.0" layoutY="8.0" prefHeight="27.0" prefWidth="117.0" promptText="Dosage *" />
+                                                            <TextField id="text_field" fx:id="issuedDrugName" layoutX="126.0" layoutY="8.0" prefHeight="27.0" prefWidth="167.0" promptText="Drug Name *" />
+                                                            <TextField id="text_field" fx:id="issuedQuantity" layoutX="433.0" layoutY="8.0" prefHeight="27.0" prefWidth="86.0" promptText="Quantity *" />
+                                                            <Label id="label" layoutX="21.0" layoutY="11.0" prefHeight="19.0" prefWidth="105.0" text="Issued by Clinic:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label id="label" layoutX="11.0" layoutY="185.0" prefHeight="19.0" prefWidth="131.0" text="Taken by Pharmacy:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="13.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <TextField id="text_field" fx:id="pharmacyQuantity" layoutX="437.0" layoutY="182.0" prefHeight="27.0" prefWidth="86.0" promptText="Quantity *" />
+                                                            <TextField id="text_field" fx:id="pharmacyDrugName" layoutX="143.0" layoutY="182.0" prefHeight="27.0" prefWidth="155.0" promptText="Drug Name *" />
+                                                            <TextField id="text_field" fx:id="pharmacyDosage" layoutX="309.0" layoutY="182.0" prefHeight="27.0" prefWidth="117.0" promptText="Dosage *" />
+                                                            <TableView fx:id="tableDrugsIssued1" layoutX="6.0" layoutY="216.0" onKeyReleased="#handlePharmacyDeleteRow" prefHeight="124.0" prefWidth="621.0">
+                                                               <columns>
+                                                                  <TableColumn fx:id="tableColPharmacyNo" prefWidth="68.0" text="#" />
+                                                                  <TableColumn fx:id="tableColPharmacyDrugName" prefWidth="245.0" text="Drug Name" />
+                                                                  <TableColumn fx:id="tableColPharmacyDosage" prefWidth="196.0" text="Dosage" />
+                                                                  <TableColumn fx:id="tableColPharmacyQty" prefWidth="112.0" text="Quantity" />
+                                                               </columns>
+                                                            </TableView>
+                                                            <Button id="button" fx:id="pharmacyAddRowButton" graphicTextGap="10.0" layoutX="535.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleAddPharmacyRow" prefHeight="32.0" prefWidth="85.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="&gt;&gt;">
+                                                               <font>
+                                                                  <Font name="Cambria Bold" size="16.0" />
+                                                               </font>
+                                                            </Button>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </Tab>
+                                            </tabs>
+                                          </TabPane>
+                                          <Button id="button" fx:id="saveSicknessButton" graphicTextGap="10.0" layoutX="232.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleSaveSickness" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="SAVE">
+                                             <font>
+                                                <Font name="Cambria Bold" size="16.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../create.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Label id="label" fx:id="caseNoLabel" layoutX="97.0" layoutY="18.0" prefHeight="19.0" prefWidth="116.0">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Button id="button" fx:id="updateButton" graphicTextGap="10.0" layoutX="35.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleUpdatePatient" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="UPDATE">
+                        <Button fx:id="addFollowUpButton" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="538.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleAddFollowUp" prefHeight="26.0" prefWidth="119.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="ADD FOLLOW UP" textAlignment="RIGHT">
                            <font>
-                              <Font name="Cambria Bold" size="16.0" />
+                              <Font name="Cambria" size="13.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../edit.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <CheckBox id="label" fx:id="checkDoD" layoutX="356.0" layoutY="148.0" mnemonicParsing="false" onAction="#checkBoxHandler" prefHeight="17.0" prefWidth="168.0" text="Set Date of Death" />
-                        <ImageView fx:id="imageLoader1" fitHeight="393.0" fitWidth="438.0" layoutX="241.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../pets.png" />
-                           </image>
-                        </ImageView>
+                        <Label id="label" fx:id="dateLabel" layoutX="97.0" layoutY="55.0" prefHeight="19.0" prefWidth="182.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </content></Tab>

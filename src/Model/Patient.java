@@ -6,16 +6,16 @@ package Model;
 public class Patient {
     private String pet_id;
     private String name;
-    private String owner_ID;
+    private String owner_name;
     private String gender;
     private String type;
     private String breed;
     private String date_of_birth;
 
-    public Patient(String pet_id, String name, String owner_ID, int gender, String type, String breed, String date_of_birth){
+    public Patient(String pet_id, String name, String owner_name, int gender, String type, String breed, String date_of_birth){
         this.setPet_id(pet_id);
         this.setName(name);
-        this.setOwner_ID(owner_ID);
+        this.setOwner_name(owner_name);
         this.setGender(gender);
         this.setType(type);
         this.setBreed(breed);
@@ -39,12 +39,12 @@ public class Patient {
         this.name = name;
     }
 
-    public String getOwner_ID() {
-        return owner_ID;
+    public String getOwner_name() {
+        return owner_name;
     }
 
-    public void setOwner_ID(String owner_ID) {
-        this.owner_ID = owner_ID;
+    public void setOwner_name(String owner_name) {
+        this.owner_name = owner_name;
     }
 
     public String getGender() {

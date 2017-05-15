@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -27,6 +28,9 @@ public class clientViewControl implements Initializable{
     private ObservableList<Owner> ownerObservableList;
 
     private int addButtonClickCount = 0;
+
+    @FXML
+    AnchorPane rootLayout;
 
     @FXML
     Button createButton, clearButton, addPhone, editButton;
@@ -160,8 +164,7 @@ public class clientViewControl implements Initializable{
 
     @FXML
     public void handleCloseButton(){
-        MainViewControl mainViewControl = new MainViewControl();
-        mainViewControl.handleCloseButton();
+        rootLayout.getChildren().clear();
     }
 
     //--view client tab--//

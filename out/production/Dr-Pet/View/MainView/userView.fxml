@@ -12,28 +12,51 @@
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
 
-<AnchorPane id="contentKeeper" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="700.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.userViewControl">
+<AnchorPane id="contentKeeper" fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="608.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.MainView.userViewControl">
    <stylesheets>
       <URL value="@../Stylesheets/mainStylesheet.css" />
    </stylesheets>
    <children>
-      <TabPane id="tabbedPane" prefHeight="700.0" prefWidth="649.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane id="tabbedPane" fx:id="tabPane" prefHeight="608.0" prefWidth="708.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab id="tab" fx:id="viewUserTab" closable="false" text="View Doctors">
+          <Tab id="tab" fx:id="viewDoctorTab" closable="false" text="View Doctors">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-               </content></Tab>
-          <Tab id="tab" closable="false" text="Add Doctor">
-               <content>
-                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="530.0" prefWidth="420.0" stylesheets="../Stylesheets/mainStylesheet.css">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="509.0" prefWidth="690.0">
                      <children>
-                        <TextField id="text_field" fx:id="userID" layoutX="21.0" layoutY="16.0" prefHeight="25.0" prefWidth="280.0" promptText="User ID *" />
-                        <PasswordField id="password_field" fx:id="password" layoutX="21.0" layoutY="45.0" prefHeight="25.0" prefWidth="280.0" promptText="Password *" />
-                        <PasswordField id="password_field" fx:id="confirm_password" layoutX="21.0" layoutY="75.0" prefHeight="25.0" prefWidth="280.0" promptText="Confirm Password *" />
-                        <TextField id="text_field" fx:id="first_name" layoutX="20.0" layoutY="129.0" prefHeight="25.0" prefWidth="280.0" promptText="First Name *" />
-                        <TextField id="text_field" fx:id="middle_initials" layoutX="20.0" layoutY="158.0" prefHeight="25.0" prefWidth="280.0" promptText="Middle Initials" />
-                        <TextField id="text_field" fx:id="last_name" layoutX="20.0" layoutY="187.0" prefHeight="25.0" prefWidth="280.0" promptText="Last Name *" />
-                        <RadioButton id="radioButton" fx:id="maleRadio" layoutX="137.0" layoutY="238.0" mnemonicParsing="false" selected="true" text="Male">
+                        <TableView fx:id="tableDoctorDetails" prefHeight="498.0" prefWidth="688.0">
+                           <columns>
+                              <TableColumn fx:id="tableColID" prefWidth="54.0" text="ID" />
+                              <TableColumn fx:id="tableColName" prefWidth="139.0" text="Name" />
+                              <TableColumn fx:id="tableColGender" prefWidth="64.0" text="Gender" />
+                              <TableColumn fx:id="tableColAddress" prefWidth="145.0" text="Address" />
+                              <TableColumn fx:id="tableColPhone" prefWidth="96.0" text="Phone" />
+                              <TableColumn fx:id="tableColEmail" prefWidth="125.0" text="Email" />
+                              <TableColumn fx:id="tableColType" prefWidth="64.0" text="User Type" />
+                           </columns>
+                        </TableView>
+                        <Button id="button" fx:id="editButton" layoutX="268.0" layoutY="509.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="153.0" text="EDIT DOCTOR">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+               </content></Tab>
+          <Tab id="tab" fx:id="addDoctorTab" closable="false" text="Add Doctor">
+               <content>
+                  <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="688.0" stylesheets="../Stylesheets/mainStylesheet.css">
+                     <children>
+                        <ImageView fx:id="imageLoader" fitHeight="146.0" fitWidth="189.0" layoutX="496.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../stethoscope.png" />
+                           </image>
+                        </ImageView>
+                        <TextField id="text_field" fx:id="userID" layoutX="35.0" layoutY="16.0" prefHeight="25.0" prefWidth="280.0" promptText="User ID *" />
+                        <PasswordField id="password_field" fx:id="password" layoutX="35.0" layoutY="45.0" prefHeight="25.0" prefWidth="280.0" promptText="Password *" />
+                        <PasswordField id="password_field" fx:id="confirm_password" layoutX="35.0" layoutY="75.0" prefHeight="25.0" prefWidth="280.0" promptText="Confirm Password *" />
+                        <TextField id="text_field" fx:id="first_name" layoutX="34.0" layoutY="129.0" prefHeight="25.0" prefWidth="280.0" promptText="First Name *" />
+                        <TextField id="text_field" fx:id="middle_initials" layoutX="34.0" layoutY="158.0" prefHeight="25.0" prefWidth="280.0" promptText="Middle Initials" />
+                        <TextField id="text_field" fx:id="last_name" layoutX="34.0" layoutY="187.0" prefHeight="25.0" prefWidth="280.0" promptText="Last Name *" />
+                        <RadioButton id="radioButton" fx:id="maleRadio" layoutX="151.0" layoutY="238.0" mnemonicParsing="false" selected="true" text="Male">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -41,12 +64,12 @@
                               <ToggleGroup fx:id="genderGroup" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="213.0" layoutY="237.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
+                        <RadioButton id="radioButton" fx:id="femaleRadio" layoutX="227.0" layoutY="237.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton id="radioButton" fx:id="marriedRadio" layoutX="137.0" layoutY="281.0" mnemonicParsing="false" selected="true" text="Married">
+                        <RadioButton id="radioButton" fx:id="marriedRadio" layoutX="151.0" layoutY="281.0" mnemonicParsing="false" selected="true" text="Married">
                            <toggleGroup>
                               <ToggleGroup fx:id="maritalGroup" />
                            </toggleGroup>
@@ -54,26 +77,26 @@
                               <Font size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton id="radioButton" fx:id="unmarriedRadio" layoutX="213.0" layoutY="281.0" mnemonicParsing="false" text="Unmarried" toggleGroup="$maritalGroup">
+                        <RadioButton id="radioButton" fx:id="unmarriedRadio" layoutX="227.0" layoutY="281.0" mnemonicParsing="false" text="Unmarried" toggleGroup="$maritalGroup">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </RadioButton>
-                        <DatePicker id="datePicker" fx:id="dob" layoutX="138.0" layoutY="333.0" prefHeight="27.0" prefWidth="162.0" promptText="yyyy/MM/dd" />
-                        <TextField id="text_field" fx:id="phone1" layoutX="21.0" layoutY="388.0" prefHeight="25.0" prefWidth="206.0" promptText="Phone Number *" />
+                        <DatePicker id="datePicker" fx:id="dob" layoutX="152.0" layoutY="333.0" prefHeight="27.0" prefWidth="162.0" promptText="yyyy/MM/dd" />
+                        <TextField id="text_field" fx:id="phone1" layoutX="35.0" layoutY="388.0" prefHeight="25.0" prefWidth="206.0" promptText="Phone Number *" />
                         <TextField id="text_field" fx:id="phone2" layoutX="21.0" layoutY="417.0" prefHeight="25.0" prefWidth="206.0" promptText="Phone Number" visible="false" />
                         <TextField id="text_field" fx:id="phone3" layoutX="21.0" layoutY="448.0" prefHeight="25.0" prefWidth="206.0" promptText="Phone Number" visible="false" />
                         <TextField id="text_field" fx:id="phone4" layoutX="21.0" layoutY="479.0" prefHeight="25.0" prefWidth="206.0" promptText="Phone Number" visible="false" />
-                        <TextField id="text_field" fx:id="email" layoutX="327.0" layoutY="16.0" prefHeight="25.0" prefWidth="280.0" promptText="Email Address" />
-                        <TextField id="text_field" fx:id="street_no" layoutX="328.0" layoutY="71.0" prefHeight="25.0" prefWidth="280.0" promptText="Street No. *" />
-                        <TextField id="text_field" fx:id="street_name" layoutX="328.0" layoutY="100.0" prefHeight="25.0" prefWidth="280.0" promptText="Street Name" />
-                        <TextField id="text_field" fx:id="city" layoutX="328.0" layoutY="130.0" prefHeight="25.0" prefWidth="280.0" promptText="City *" />
-                        <TextField id="text_field" fx:id="state" layoutX="328.0" layoutY="159.0" prefHeight="25.0" prefWidth="280.0" promptText="State" />
-                        <TextField id="text_field" fx:id="country" layoutX="328.0" layoutY="188.0" prefHeight="25.0" prefWidth="280.0" promptText="Country *" />
-                        <TextField id="text_field" fx:id="nic" layoutX="326.0" layoutY="235.0" prefHeight="25.0" prefWidth="280.0" promptText="National Identity Card Number *" />
-                        <TextField id="text_field" fx:id="basic_salary" layoutX="328.0" layoutY="308.0" prefHeight="25.0" prefWidth="280.0" promptText="Basic Salary *" />
-                        <DatePicker id="datePicker" fx:id="employment_date" layoutX="466.0" layoutY="346.0" prefHeight="25.0" prefWidth="142.0" promptText="yyyy/MM/dd" />
-                        <RadioButton id="radioButton" fx:id="adminRadio" layoutX="422.0" layoutY="388.0" mnemonicParsing="false" selected="true" text="Administrator">
+                        <TextField id="text_field" fx:id="email" layoutX="357.0" layoutY="16.0" prefHeight="25.0" prefWidth="280.0" promptText="Email Address" />
+                        <TextField id="text_field" fx:id="street_no" layoutX="358.0" layoutY="71.0" prefHeight="25.0" prefWidth="280.0" promptText="Street No. *" />
+                        <TextField id="text_field" fx:id="street_name" layoutX="358.0" layoutY="100.0" prefHeight="25.0" prefWidth="280.0" promptText="Street Name" />
+                        <TextField id="text_field" fx:id="city" layoutX="358.0" layoutY="130.0" prefHeight="25.0" prefWidth="280.0" promptText="City *" />
+                        <TextField id="text_field" fx:id="state" layoutX="358.0" layoutY="159.0" prefHeight="25.0" prefWidth="280.0" promptText="State" />
+                        <TextField id="text_field" fx:id="country" layoutX="358.0" layoutY="188.0" prefHeight="25.0" prefWidth="280.0" promptText="Country *" />
+                        <TextField id="text_field" fx:id="nic" layoutX="356.0" layoutY="235.0" prefHeight="25.0" prefWidth="280.0" promptText="National Identity Card Number *" />
+                        <TextField id="text_field" fx:id="basic_salary" layoutX="358.0" layoutY="308.0" prefHeight="25.0" prefWidth="280.0" promptText="Basic Salary *" />
+                        <DatePicker id="datePicker" fx:id="employment_date" layoutX="496.0" layoutY="346.0" prefHeight="25.0" prefWidth="142.0" promptText="yyyy/MM/dd" />
+                        <RadioButton id="radioButton" fx:id="adminRadio" layoutX="452.0" layoutY="388.0" mnemonicParsing="false" selected="true" text="Administrator">
                            <toggleGroup>
                               <ToggleGroup fx:id="userGroup" />
                            </toggleGroup>
@@ -81,28 +104,23 @@
                               <Font size="13.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton id="radioButton" fx:id="doctorRadio" layoutX="544.0" layoutY="388.0" mnemonicParsing="false" text="Doctor" toggleGroup="$userGroup">
+                        <RadioButton id="radioButton" fx:id="doctorRadio" layoutX="574.0" layoutY="388.0" mnemonicParsing="false" text="Doctor" toggleGroup="$userGroup">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </RadioButton>
-                        <Label id="label" layoutX="22.0" layoutY="237.0" prefHeight="17.0" prefWidth="70.0" text="Gender*:">
+                        <Label id="label" layoutX="36.0" layoutY="237.0" prefHeight="17.0" prefWidth="70.0" text="Gender*:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Button id="button" fx:id="addPhone" layoutX="232.0" layoutY="383.0" mnemonicParsing="false" onAction="#handlePhoneNumber" text="+" />
-                        <Label id="label" layoutX="326.0" layoutY="349.0" prefHeight="19.0" prefWidth="145.0" text="Date of Employment*:">
+                        <Button id="button" fx:id="addPhone" layoutX="246.0" layoutY="383.0" mnemonicParsing="false" onAction="#handlePhoneNumber" text="+" />
+                        <Label id="label" layoutX="356.0" layoutY="349.0" prefHeight="19.0" prefWidth="145.0" text="Date of Employment*:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imageLoader" fitHeight="223.0" fitWidth="278.0" layoutX="351.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../stethoscope.png" />
-                           </image>
-                        </ImageView>
-                        <Button id="button" fx:id="createButton" graphicTextGap="10.0" layoutX="20.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleCreateUser" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CREATE">
+                        <Button id="button" fx:id="createButton" graphicTextGap="10.0" layoutX="20.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleCreateUser" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CREATE">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
@@ -114,7 +132,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button id="button" fx:id="clearButton" graphicTextGap="10.0" layoutX="20.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CLEAR">
+                        <Button id="button" fx:id="clearButton" graphicTextGap="10.0" layoutX="196.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleClearFields" prefHeight="30.0" prefWidth="165.0" stylesheets="@../Stylesheets/mainStylesheet.css" text="CLEAR">
                            <font>
                               <Font name="Cambria Bold" size="16.0" />
                            </font>
@@ -126,31 +144,36 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label id="label" layoutX="22.0" layoutY="281.0" prefHeight="19.0" prefWidth="107.0" text="Marital Status*:">
+                        <Label id="label" layoutX="36.0" layoutY="281.0" prefHeight="19.0" prefWidth="107.0" text="Marital Status*:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label id="label" layoutX="22.0" layoutY="336.0" prefHeight="19.0" prefWidth="98.0" text="Date of Birth*:">
+                        <Label id="label" layoutX="36.0" layoutY="336.0" prefHeight="19.0" prefWidth="98.0" text="Date of Birth*:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label id="label" layoutX="328.0" layoutY="388.0" prefHeight="19.0" prefWidth="94.0" text="User Type*:">
+                        <Label id="label" layoutX="358.0" layoutY="388.0" prefHeight="19.0" prefWidth="94.0" text="User Type*:">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Line endX="180.0" layoutX="429.0" layoutY="283.0" startX="-100.0" />
+                        <Line endX="180.0" layoutX="459.0" layoutY="283.0" startX="-100.0" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab id="tab" closable="false" text="Edit Doctor" />
+            <Tab id="tab" fx:id="editDoctorTab" closable="false" text="Edit Doctor" />
         </tabs>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </TabPane>
+      <ImageView fx:id="closeButton" fitHeight="32.0" fitWidth="39.0" layoutX="664.0" layoutY="9.0" onMouseClicked="#handleCloseButton" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../close.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

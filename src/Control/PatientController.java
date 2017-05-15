@@ -18,7 +18,7 @@ public class PatientController {
     private String patientID;
     private Patient patient;
     private ObservableList<Patient> patientObservableList;
-    private String ownerID, ownerName;
+    private String ownerID;
     private OwnerController ownerController;
     private SpecialControl specialControl;
 
@@ -42,7 +42,7 @@ public class PatientController {
         preparedStatement = connection.prepareStatement("INSERT INTO patient VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
         preparedStatement.setString(1, this.patientID);
-        preparedStatement.setString(2, patient.getOwner_ID());
+        preparedStatement.setString(2, patient.getOwner_name());
         preparedStatement.setString(3, patient.getName());
         preparedStatement.setInt(4, specialControl.getGenderInt(patient.getGender()));
         preparedStatement.setString(5, patient.getType());
@@ -75,8 +75,7 @@ public class PatientController {
         resultSet = preparedStatement.executeQuery();
 
         while (resultSet.next()){
-            ownerID = resultSet.getString("owner_id");
-            this.ownerName = ownerController.getOwnerName(ownerID);
+            String ownerName = ownerController.getOwnerName(resultSet.getString("owner_id"));
 
             patient = new Patient(resultSet.getString("pet_id"),
                     resultSet.getString("name"),
